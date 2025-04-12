@@ -1,0 +1,12 @@
+{
+  "name": "XpenZify",
+  "private": true,
+  "scripts": {
+    "client": "npm start --prefix client",
+    "server": "npm run dev --prefix server",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
