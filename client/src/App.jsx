@@ -1,5 +1,6 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import OCRUpload from './pages/OCRUpload';import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import About from './pages/About';
@@ -17,6 +18,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/coming-soon" element={<ComingSoon />} />
           <Route path='/SignUp' element={<SignUp/>}/>
+          <Route path="/upload-ocr" element={<OCRUpload />} />
         </Routes>
       </div>
     </Router>
