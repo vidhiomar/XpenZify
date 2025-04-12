@@ -1,5 +1,5 @@
 {
-  "name": "XpenZifyVidhiKaVidhan",
+  "name": "XpenZify",
   "private": true,
   "scripts": {
     "client": "npm start --prefix client",
