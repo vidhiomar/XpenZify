@@ -2,7 +2,7 @@
   "name": "XpenZify",
   "private": true,
   "scripts": {
-    "client": "npm start --prefix client",
+    "client": "npm run dev --prefix client",
     "server": "npm run dev --prefix server",
     "start": "concurrently \"npm run server\" \"npm run client\""
   },

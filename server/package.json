@@ -2,7 +2,7 @@
   "name": "powerbi-api",
   "version": "1.0.0",
   "description": "Node.js API for Power BI Integration",
-  "main": "index.js",
+  "main": "server/index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js",

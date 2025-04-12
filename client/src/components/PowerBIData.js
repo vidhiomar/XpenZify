@@ -10,7 +10,7 @@ const PowerBIData = () => {
       try {
         // Adjust the URL if necessary. If you set up a proxy in your client package.json,
         // you might use a relative URL like '/powerbi/data'.
-        const result = await axios.get("http://localhost:5000/powerbi/data");
+        const result = await axios.get("http://localhost:5001/powerbi/data");
         setData(result.data);
       } catch (err) {
         setError(err.message);

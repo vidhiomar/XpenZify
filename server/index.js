@@ -1,4 +1,3 @@
-
 import express from 'express';
 import cors from 'cors';
 import axios from 'axios';
@@ -24,7 +23,6 @@ app.post('/upload', upload.single('file'), async (req, res) => {
       return res.status(400).json({ error: 'No file uploaded' });
     }
     
-
     const dataURL = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
     
     const { data: { text } } = await Tesseract.recognize(dataURL, 'eng');
@@ -81,5 +79,5 @@ app.get('/powerbi/data', async (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
