@@ -1,12 +1,24 @@
 import { motion } from 'framer-motion';
 import { FiMail, FiLock } from 'react-icons/fi';
 import SignUp from './SignUp';
+import React, { useState } from "react";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
-  const handleSubmit = (e) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Handle login logic here
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // Redirect user or load dashboard after successful login
+    } catch (error) {
+      setError(error.message);
+    }
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
@@ -18,7 +30,7 @@ function Login() {
         className="bg-card p-8 rounded-2xl shadow-lg w-full max-w-md mx-4 relative z-10"
       >
         <h2 className="text-3xl font-bold text-text-primary mb-8 text-center">Welcome Back</h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <label htmlFor="email" className="block text-text-secondary mb-2 text-sm">
               Email Address
@@ -30,6 +42,8 @@ function Login() {
                 id="email"
                 className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all duration-300"
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} 
                 required
               />
             </div>
@@ -45,6 +59,8 @@ function Login() {
                 id="password"
                 className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all duration-300"
                 placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
@@ -57,6 +73,7 @@ function Login() {
           >
             Sign In
           </motion.button>
+          {error && <p>{error}</p>}
 
           <div className="text-center text-sm text-text-secondary mt-4">
             Don’t have an account?{' '}
